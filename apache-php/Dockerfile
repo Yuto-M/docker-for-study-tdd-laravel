@@ -33,6 +33,10 @@ ENV PATH $PATH:/composer/vendor/bin
 # Laravel installerをインストール
 RUN composer global require "laravel/installer"
 
+# node.jsインストール
+RUN curl -sL https://rpm.nodesource.com/setup_8.x | bash -
+RUN yum -y install nodejs
+
 # httpdをforegroundで動かしてコンテナが終了しないようにする
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
 
